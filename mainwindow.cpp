@@ -71,7 +71,7 @@ MainWindow::~MainWindow()
 */
 void MainWindow::on_hexFileButton_clicked()
 {
-    QString fileName = QFileDialog::getOpenFileName(this, tr("Open Hex"), "", tr("Hex files (*.hex)"));
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open Hex"), "", tr("Hex files (*.hex *.HEX)"));
     ui->hexFileLineEdit->setText(fileName);
 }
 
@@ -82,7 +82,7 @@ void MainWindow::on_programButton_clicked()
 {
     QDir lobDir(QCoreApplication::applicationDirPath());
     if(ui->hexFileLineEdit->text().isNull() || ui->hexFileLineEdit->text().isEmpty()){
-        gsHexFileName = QFileDialog::getOpenFileName(this, tr("Open Hex"), "", tr("Hex files (*.hex)"));
+        gsHexFileName = QFileDialog::getOpenFileName(this, tr("Open Hex"), "", tr("Hex files (*.hex *.HEX)"));
         ui->hexFileLineEdit->setText(gsHexFileName);
     } else {
         gsHexFileName = ui->hexFileLineEdit->text();
@@ -133,7 +133,7 @@ void MainWindow::on_verifyButton_clicked()
     QDir lobDir(QCoreApplication::applicationDirPath());
 
     if(ui->hexFileLineEdit->text().isNull() || ui->hexFileLineEdit->text().isEmpty()){
-        gsHexFileName = QFileDialog::getOpenFileName(this, tr("Open Hex"), "", tr("Hex files (*.hex)"));
+        gsHexFileName = QFileDialog::getOpenFileName(this, tr("Open Hex"), "", tr("Hex files (*.hex *.HEX)"));
         ui->hexFileLineEdit->setText(gsHexFileName);
     } else {
         gsHexFileName = ui->hexFileLineEdit->text();
@@ -155,7 +155,7 @@ void MainWindow::on_verifyButton_clicked()
 void MainWindow::on_readButton_clicked()
 {
     QDir lobDir(QCoreApplication::applicationDirPath());
-    gsHexFileName = QFileDialog::getSaveFileName(this, tr("Save Hex"), "", tr("Hex files (*.hex)"));
+    gsHexFileName = QFileDialog::getSaveFileName(this, tr("Save Hex"), "", tr("Hex files (*.hex *.HEX)"));
     if(!gsHexFileName.isNull() && !gsHexFileName.isEmpty()){
         if(!gsHexFileName.contains(".hex")){
             gsHexFileName += ".hex";
@@ -266,5 +266,6 @@ void MainWindow::main_slot_pickitInfo(QString asPicKitInfo)
 {
     ui->pickitInfoTextArea->appendPlainText(asPicKitInfo);
 }
+
 
 
